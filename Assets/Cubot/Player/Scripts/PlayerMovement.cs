@@ -3,26 +3,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool movable;
+    
     [SerializeField] private float maxSpeed;
     [SerializeField] private float directionChangeSpeed;
     [SerializeField] private float pickupRate;
     [SerializeField] private float slowDownRate;
-    [SerializeField] private float jumpHeight;
     
     private Rigidbody _playerPhysics;
     private float _speed;
     private float _movementAxisRaw;
     private float _movementAxis;
     private bool _moving;
-    [SerializeField]private bool _jumping; // DEBUG
     
     private void Start()
     {
         _playerPhysics = GetComponent<Rigidbody>();
         InputManager.PlayerActions.Movement.performed += Move;
         InputManager.PlayerActions.Movement.canceled += Stop;
-        
-        InputManager.PlayerActions.Jump.performed += Jump;
     }
 
     private void Move(InputAction.CallbackContext obj)
@@ -37,15 +35,9 @@ public class PlayerMovement : MonoBehaviour
         _moving = false;
     }
 
-    private void Jump(InputAction.CallbackContext obj)
-    {
-        _playerPhysics.AddForce(transform.up * jumpHeight);
-        _jumping = true;
-    }
-
     private void Update()
     {
-        if (_jumping) return;
+        if (!movable) return;
         SetupVelocity();
         SetupDirection();
     }
@@ -57,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.gravity.y > 0f || Physics.gravity.x != 0f)
             vel.x = -_movementAxis * _speed;
         else 
-            vel.x = -_movementAxis * _speed;
+            vel.x = _movementAxis * _speed;
         
         _playerPhysics.velocity = transform.InverseTransformDirection(vel);
     }
