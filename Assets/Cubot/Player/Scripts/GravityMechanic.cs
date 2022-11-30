@@ -1,20 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GravityMechanic : MonoBehaviour
 {
     private Quaternion _rotationBuffer;
-    private Transform _transform;
     
     private void Start()
     {
-        _transform = transform;
         InputManager.PlayerActions.ChangeGravity.performed += ChangeDirection;
     }
 
     private void ChangeDirection(InputAction.CallbackContext obj)
     {
+        var physics = GetComponent<Rigidbody>();
+        physics.velocity = Vector3.zero;
+
         var dir = obj.ReadValue<Vector2>();
         Physics.gravity = dir * 9.81f;
         
