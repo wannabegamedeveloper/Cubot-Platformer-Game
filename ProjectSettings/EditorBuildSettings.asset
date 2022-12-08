@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Cubot/Scenes/Demo Scene 1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Cubot/Scenes/Level 1.unity
+    guid: 3357739dddb8a91428ad3000b3783eb4
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 2.unity
+    guid: 6e83f8947e8a29f4ca5a681f712caf69
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 3.unity
+    guid: b9bb272239e339442b7c1954330c7c7d
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 4.unity
+    guid: e175039aa6cb41346aaaebb5dc0bb4f8
   m_configObjects: {}

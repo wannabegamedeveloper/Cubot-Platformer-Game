@@ -7,6 +7,7 @@ public class GravityMechanic : MonoBehaviour
     
     private void Start()
     {
+        Physics.gravity = Vector3.down * 9.81f;
         InputManager.PlayerActions.ChangeGravity.performed += ChangeDirection;
     }
 
