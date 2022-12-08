@@ -6,6 +6,7 @@ public class ArrowCollision : MonoBehaviour
 {
     private Transform _transform;
     private Animator _animator;
+    private ArrowsSpawner _arrowsSpawner;
     
     private void Start()
     {
@@ -19,20 +20,20 @@ public class ArrowCollision : MonoBehaviour
         {
             _animator.Play("Trigger Rings", -1, 0f);
             
-            var arrowSpawner = _transform.parent.GetComponent<ArrowsSpawner>();
+            _arrowsSpawner = _transform.parent.GetComponent<ArrowsSpawner>();
+            _transform.GetComponent<BoxCollider>().enabled = false;
 
             if (_transform.name == "Start")
-                arrowSpawner.index = 0;
-            
-            arrowSpawner.Spawn(_transform.position);
-            if (_transform.name != "Start")
-                StartCoroutine(Die());
+                _arrowsSpawner.index = 0;
+
+            _arrowsSpawner.Spawn(_transform.position);
         }
     }
 
-    private IEnumerator Die()
+    public IEnumerator Die()
     {
         yield return new WaitForSeconds(1f);
+        _transform.GetComponent<Collider>().enabled = false;
         _animator.Play("Die", -1, 0f);
     }
 
@@ -40,6 +41,12 @@ public class ArrowCollision : MonoBehaviour
     private void DestroyObject()
     {
         if (_transform.name != "Start")
+        {
             Destroy(gameObject);
+            _arrowsSpawner = _transform.parent.GetComponent<ArrowsSpawner>();
+            _arrowsSpawner.spawned--;
+            if (_arrowsSpawner.spawned == 0)
+                _arrowsSpawner.ResetColliders();
+        }
     }
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  key: {fileID: 589867634547716509, guid: 148025ed1dbd21e4995bd6d5969d2860, type: 3}
+  key: {fileID: 7446004052628563976, guid: a4edee382e719794fa9c960b1bdc0f9e, type: 3}
   arrow: {fileID: 7446004052628563976, guid: 43e7668d2ac52474ba2d200551c7d2f8, type: 3}
   door: {fileID: 0}
   directions: 0e010000b40000005a000000b4000000
