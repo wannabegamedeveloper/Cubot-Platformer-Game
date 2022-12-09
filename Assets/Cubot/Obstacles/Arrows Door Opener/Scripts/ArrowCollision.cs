@@ -1,9 +1,13 @@
 using System.Collections;
+using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
 
 public class ArrowCollision : MonoBehaviour
 {
+    [SerializeField] private float cameraShakeIntensity = 5f;
+    [SerializeField] private float cameraShakeTime = .1f;
+    
     private Transform _transform;
     private Animator _animator;
     private ArrowsSpawner _arrowsSpawner;
@@ -18,6 +22,8 @@ public class ArrowCollision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            CameraBehaviour.CameraShake(cameraShakeIntensity, cameraShakeTime);
+            
             _animator.Play("Trigger Rings", -1, 0f);
             
             _arrowsSpawner = _transform.parent.GetComponent<ArrowsSpawner>();
@@ -33,7 +39,7 @@ public class ArrowCollision : MonoBehaviour
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(1f);
-        _transform.GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         _animator.Play("Die", -1, 0f);
     }
 

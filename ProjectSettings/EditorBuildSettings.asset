@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cubot/Scenes/Level 4.unity
     guid: e175039aa6cb41346aaaebb5dc0bb4f8
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 5.unity
+    guid: f8f20894f1090d94e92cabb70bb6576d
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 6.unity
+    guid: 1055cb7d8f6b274408646f8d0b37bed4
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 7.unity
+    guid: e058c0dd314a24d4d88e483b7c58d346
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 8.unity
+    guid: a3f29bcf061dcb14d9b8a4cc57875bd6
+  - enabled: 1
+    path: Assets/Cubot/Scenes/Level 9.unity
+    guid: 72108837b6334b94da0791cfdf8979c5
   m_configObjects: {}

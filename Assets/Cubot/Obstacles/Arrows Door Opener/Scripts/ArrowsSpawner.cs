@@ -4,14 +4,15 @@ public class ArrowsSpawner : MonoBehaviour
 {
     public int index;
     public int spawned;
+    public int count;
     
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject arrow;
-    [SerializeField] private GameObject door;
+    [SerializeField] private Animator door;
     [SerializeField] private Direction[] directions;
     [SerializeField] private float distance;
 
-    private int _count;
+    private bool _opened;
     
     private enum Direction
     {
@@ -20,23 +21,25 @@ public class ArrowsSpawner : MonoBehaviour
 
     private void Start()
     {
-        _count = directions.Length;
+        count = directions.Length;
     }
 
     public void ResetColliders()
     {
+        if (_opened) return;
         transform.GetChild(0).GetComponent<Collider>().enabled = true;
     }
     
     public void Spawn(Vector3 position)
     {
-        if (index == _count)
+        if (index == count)
         {
             var start = transform.GetChild(0).GetComponent<ArrowCollision>();
             start.GetComponent<Collider>().enabled = false;
+            _opened = true;
             StartCoroutine(start.Die());
             
-            door.SetActive(false);
+            door.Play("Open Door", -1, 0f);
             return;
         }
 
@@ -52,7 +55,7 @@ public class ArrowsSpawner : MonoBehaviour
         else if (directions[index] == Direction.Up)
             pos += Vector3.up * distance;
 
-        if (index == _count - 1)
+        if (index == count - 1)
         {
             var keySphere = Instantiate(key, pos, rot, transform);
             StartCoroutine(keySphere.GetComponent<ArrowCollision>().Die());

@@ -27,7 +27,7 @@ public class Jumping : MonoBehaviour
     {
         if (!collision.transform.CompareTag("Platform")) return;
         var ray = new Ray(_transform.position, -_transform.up);
-        if (Physics.Raycast(ray, rayDistance))
+        if (Physics.SphereCast(_transform.position, rayDistance, -transform.up, out var hit))
             playerMovement.movable = true;
     }
 
@@ -46,7 +46,7 @@ public class Jumping : MonoBehaviour
     {
         var transform1 = transform;  //
         var position = transform1.position;  //
-        Gizmos.DrawLine(position, position - transform1.up * rayDistance);   //  DEBUG
+        Gizmos.DrawSphere(position, rayDistance);   //  DEBUG
     }
 
     private void Jump(InputAction.CallbackContext obj)

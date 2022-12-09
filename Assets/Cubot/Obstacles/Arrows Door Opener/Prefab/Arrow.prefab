@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bfaf870c7fac34e91536bb2fafe203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShakeIntensity: 3.5
+  cameraShakeTime: 0.1
 --- !u!65 &9035080248173438251
 BoxCollider:
   m_ObjectHideFlags: 0
