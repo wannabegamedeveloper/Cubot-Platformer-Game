@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5509972139388427830}
   - component: {fileID: 5509972139388427831}
   - component: {fileID: 5509972139388427824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Killzone
   m_TagString: Unsafe
   m_Icon: {fileID: 0}

@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GravityMechanic : MonoBehaviour
 {
+    [SerializeField] private List<Transform> affectedBodies;
+    
+    
     private Quaternion _rotationBuffer;
     
     private void Start()
@@ -13,8 +17,10 @@ public class GravityMechanic : MonoBehaviour
 
     private void ChangeDirection(InputAction.CallbackContext obj)
     {
-        var physics = GetComponent<Rigidbody>();
-        physics.velocity = Vector3.zero;
+        affectedBodies.Add(transform);
+
+        foreach (var affectedBody in affectedBodies)
+            affectedBody.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         var dir = obj.ReadValue<Vector2>();
         Physics.gravity = dir * 9.81f;
@@ -32,5 +38,8 @@ public class GravityMechanic : MonoBehaviour
     private void Update()
     {
         transform.rotation = _rotationBuffer;
+     
+        foreach (var affectedBody in affectedBodies)
+            affectedBody.rotation = _rotationBuffer;
     }
 }
