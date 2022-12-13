@@ -1,5 +1,4 @@
 using System.Collections;
-using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -23,6 +22,9 @@ public class ArrowCollision : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             CameraBehaviour.CameraShake(cameraShakeIntensity, cameraShakeTime);
+
+            if (PlayerPrefs.GetInt("SFX") == 0)
+                other.GetComponent<AudioSource>().Play();
             
             _animator.Play("Trigger Rings", -1, 0f);
             

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 650516023656182694}
   - component: {fileID: 6657940977809487886}
   - component: {fileID: 6797428346881356884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Key Enemy
   m_TagString: Key
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 2641599458729807785}
   - component: {fileID: 1371068060525084684}
   - component: {fileID: 3811158449755763910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c710c39d192ac434081c33738d72dd69, type: 2}
+  - {fileID: 2100000, guid: ff6d6b277b41c124e85e6e663aae20ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 8009132440185428473}
   - component: {fileID: 6379907494646404700}
   - component: {fileID: 9182007694378181270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c710c39d192ac434081c33738d72dd69, type: 2}
+  - {fileID: 2100000, guid: ff6d6b277b41c124e85e6e663aae20ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 7271328251290810728}
   - component: {fileID: 6000810184463382221}
   - component: {fileID: 8404805800675803655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c710c39d192ac434081c33738d72dd69, type: 2}
+  - {fileID: 2100000, guid: ff6d6b277b41c124e85e6e663aae20ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

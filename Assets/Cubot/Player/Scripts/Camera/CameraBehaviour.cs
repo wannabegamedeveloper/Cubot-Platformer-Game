@@ -13,6 +13,7 @@ public class CameraBehaviour : MonoBehaviour
 
     public static void CameraShake(float intensity, float time)
     {
+        if (PlayerPrefs.GetInt("CameraShake") == 1) return;
         var cinemachineBasicMultiChannelPerlin =
             _cvCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
@@ -21,6 +22,7 @@ public class CameraBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerPrefs.GetInt("CameraShake") == 1) return;
         if (!(_timer > 0)) return;
         _timer -= Time.deltaTime;
         if (_timer <= 0)

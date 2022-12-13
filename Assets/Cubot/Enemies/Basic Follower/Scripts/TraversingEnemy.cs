@@ -7,6 +7,8 @@ public class TraversingEnemy : MonoBehaviour
     [SerializeField] private float forwardRayDistance;
     [SerializeField] private float groundCheckRayDistance;
     [SerializeField] private LayerMask layersToDetect;
+    [SerializeField] private LayerMask layersToHide;
+    
     
     private int _direction = 1;
     private Rigidbody _enemyPhysics;
@@ -20,7 +22,7 @@ public class TraversingEnemy : MonoBehaviour
 
     private void Update()
     {
-        if (!Physics.Raycast(_transform.position, -_transform.up, groundCheckRayDistance)) return;
+        if (!Physics.Raycast(_transform.position, -_transform.up, groundCheckRayDistance, ~layersToHide)) return;
         _enemyPhysics.velocity = _transform.right * _direction * speed;
         if (Physics.Raycast(_transform.position, _transform.right * _direction, forwardRayDistance, layersToDetect) ||
             !Physics.Raycast(_transform.position + _transform.right * _direction, -_transform.up, groundCheckRayDistance))

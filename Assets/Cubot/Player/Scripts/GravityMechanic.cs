@@ -5,19 +5,19 @@ using UnityEngine.InputSystem;
 public class GravityMechanic : MonoBehaviour
 {
     [SerializeField] private List<Transform> affectedBodies;
-    
-    
+
     private Quaternion _rotationBuffer;
-    
+
     private void Start()
     {
         Physics.gravity = Vector3.down * 9.81f;
         InputManager.PlayerActions.ChangeGravity.performed += ChangeDirection;
+        affectedBodies.Add(transform);
     }
 
     private void ChangeDirection(InputAction.CallbackContext obj)
     {
-        affectedBodies.Add(transform);
+        var oldPhysicsGravity = Physics.gravity;
 
         foreach (var affectedBody in affectedBodies)
             affectedBody.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -33,6 +33,9 @@ public class GravityMechanic : MonoBehaviour
             _rotationBuffer = Quaternion.Euler(0f, 0f, 180f);
         else if (Mathf.Approximately(dir.y, -1f))
             _rotationBuffer = Quaternion.Euler(0f, 0f, 0f);
+        
+        if (oldPhysicsGravity != Physics.gravity)
+            GetComponent<PlayerMovement>().movable = false;
     }
 
     private void Update()
