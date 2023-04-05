@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class Jumping : MonoBehaviour
 {
+    public bool paused;
+    
     [SerializeField] private float jumpVelocity;
     [SerializeField] private float rayDistance;
     [SerializeField] private PlayerMovement playerMovement;
@@ -33,6 +35,7 @@ public class Jumping : MonoBehaviour
 
     private void Update()
     {
+        if (paused) return;
         var localVelocity = transform.InverseTransformDirection(_playerPhysics.velocity);
         if (localVelocity.y < 0f)
             _playerPhysics.velocity += _transform.up * -9.81f * (fallMultiplier - 1) * Time.deltaTime;
@@ -42,10 +45,11 @@ public class Jumping : MonoBehaviour
             _playerPhysics.velocity += _transform.up * -9.81f * (highJumpMultiplier - 1) * Time.deltaTime;
     }
 
-    private void CheckGround()
+    public void CheckGround()
     {
         var ray = new Ray(_transform.position, -_transform.up);
         playerMovement.movable = Physics.Raycast(ray, rayDistance);
+        print(Physics.Raycast(ray, rayDistance));
     }
 
     private void OnDrawGizmos()  //
@@ -57,6 +61,7 @@ public class Jumping : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext obj)
     {
+        if (paused) return;
         if (!playerMovement.movable) return;
         if (PlayerPrefs.GetInt("SFX") == 0)
             _tickSound.Play();
@@ -67,6 +72,7 @@ public class Jumping : MonoBehaviour
 
     private void JumpLeft(InputAction.CallbackContext obj)
     {
+        if (paused) return;
         _jumpPressed = false;
     }
 }

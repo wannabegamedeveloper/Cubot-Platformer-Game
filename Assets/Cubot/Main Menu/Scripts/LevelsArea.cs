@@ -29,7 +29,7 @@ public class LevelsArea : MonoBehaviour
     [UsedImplicitly]
     public void ChangeSFX()
     {
-        PlayerPrefs.SetInt("CameraShake", sfx.isOn ? 0 : 1);
+        PlayerPrefs.SetInt("SFX", sfx.isOn ? 0 : 1);
     }
 
     [UsedImplicitly]

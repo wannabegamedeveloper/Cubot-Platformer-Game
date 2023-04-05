@@ -8,6 +8,7 @@ TagManager:
   - Unsafe
   - Key
   - Enemy
+  - Tutorial
   layers:
   - Default
   - TransparentFX

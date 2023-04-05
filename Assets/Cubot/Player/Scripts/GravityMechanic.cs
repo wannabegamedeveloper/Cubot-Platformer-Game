@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class GravityMechanic : MonoBehaviour
 {
-    [SerializeField] private List<Transform> affectedBodies;
+    public bool paused;
+    
+    [SerializeField] public List<Transform> affectedBodies;
 
     private Quaternion _rotationBuffer;
 
@@ -17,6 +19,7 @@ public class GravityMechanic : MonoBehaviour
 
     private void ChangeDirection(InputAction.CallbackContext obj)
     {
+        if (paused) return;
         var oldPhysicsGravity = Physics.gravity;
 
         foreach (var affectedBody in affectedBodies)
@@ -36,10 +39,14 @@ public class GravityMechanic : MonoBehaviour
         
         if (oldPhysicsGravity != Physics.gravity)
             GetComponent<PlayerMovement>().movable = false;
+        
+        transform.rotation = _rotationBuffer;
+        GetComponent<Jumping>().CheckGround();
     }
 
     private void Update()
     {
+        if (paused) return;
         transform.rotation = _rotationBuffer;
      
         foreach (var affectedBody in affectedBodies)

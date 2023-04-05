@@ -7,5 +7,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.transform.CompareTag("Unsafe") || collision.transform.CompareTag("Enemy"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        GetComponent<Jumping>().CheckGround();
     }
 }

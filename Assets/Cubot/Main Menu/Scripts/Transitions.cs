@@ -21,7 +21,7 @@ public class Transitions : MonoBehaviour
     
     private void Awake()
     {
-        InputSystem.onAnyButtonPress.Call(control => PressedKey());
+        InputSystem.onAnyButtonPress.Call(_ => PressedKey());
     }
 
     private void Start()

@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         _playerPhysics = GetComponent<Rigidbody>();
         InputManager.PlayerActions.Movement.performed += Move;
         InputManager.PlayerActions.Movement.canceled += Stop;
